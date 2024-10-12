@@ -10,15 +10,11 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const links = [
   {
-    black:
-      "https://drive.google.com/file/d/15BbARC3E-8YMcXRL-e0ZPXJtU5J55JLx/view?usp=drive_link",
-    oColored:
-      "https://drive.google.com/file/d/1FJxEnUBGJgP_oy2r-RlgS23mpb33po1d/view?usp=drive_link",
-    oBlack:
-      "https://drive.google.com/file/d/1QoLw60JAxKUopz0U_nEDj4maaMlfqNUv/view?usp=drive_link",
-    redCross:
-      "https://drive.google.com/file/d/1JuX1T6OogHhFdtqp3lCexuPzjR2Z1a3k/view?usp=drive_link",
-    red: "https://drive.google.com/file/d/1X1aMZ7sTiyqTHRTG4Fz-1mPMZwHO61F2/view?usp=drive_link",
+    black: "https://i.postimg.cc/kXj4n4LG/black-tuta.jpg",
+    oColored: "https://i.postimg.cc/K8RY4byN/Cultural-1.jpg",
+    oBlack: "https://i.postimg.cc/HLMs4tn8/Cultural2.jpg",
+    redCross: "https://i.postimg.cc/GmVmyfL1/Cultural3.jpg",
+    red: "https://i.postimg.cc/cHMxP4Qs/red-tuta.jpg",
   },
 ];
 

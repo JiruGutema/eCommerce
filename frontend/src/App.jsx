@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Home from "./components/Home/Home";
+import Cart from "./components/Cart/Cart";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import NavBar from "./components/NavBar/NavBar";
+import useProducts from "./hooks/useProducts";
+import { useEffect, useState } from "react";
+import Alert from "./components/Alert/Alert";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const products = useProducts();
+  console.log(products);
+  const [cart, setCart] = useState(() => {
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  const addToCart = (product) => {
+    const alertContainer = document.getElementById("alert");
+    const messageContainer = document.getElementById("message");
+
+    if (cart.some((cartItem) => cartItem._id === product._id)) {
+      messageContainer.textContent = "Product is already added to the cart";
+      alertContainer.style.color = "red";
+      alertContainer.style.display = "block";
+      setTimeout(() => {
+        alertContainer.style.display = "none";
+      }, 3000);
+    } else {
+      messageContainer.textContent = "Item added to the cart";
+      alertContainer.style.color = "green";
+      alertContainer.style.display = "block";
+      setTimeout(() => {
+        alertContainer.style.display = "none";
+      }, 2000);
+
+      setCart([...cart, { ...product, qty: 1 }]);
+    }
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <NavBar cartItems={cart} />
+        <Alert />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home products={products} addToCart={addToCart} />}
+          />
+          <Route path="/Cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
