@@ -25,25 +25,27 @@ function App() {
   }, [cart]);
 
   const addToCart = (product) => {
-    const alertContainer = document.getElementById("alert");
+    const alertContainer = document.getElementById("alertMessage");
     const messageContainer = document.getElementById("message");
 
     if (cart.some((cartItem) => cartItem._id === product._id)) {
       messageContainer.textContent = "Product is already added to the cart";
-      alertContainer.style.color = "red";
+      alertContainer.style.color = "white";
       alertContainer.style.display = "block";
+      alertContainer.style.backgroundColor = "red";
       setTimeout(() => {
         alertContainer.style.display = "none";
       }, 3000);
     } else {
       messageContainer.textContent = "Item added to the cart";
-      alertContainer.style.color = "green";
+      alertContainer.style.backgroundColor = "green";
+      alertContainer.style.color = "white";
       alertContainer.style.display = "block";
       setTimeout(() => {
         alertContainer.style.display = "none";
       }, 2000);
 
-      setCart([...cart, { ...product, qty: 1 }]);
+      setCart([...cart, { ...product, qty: 10 }]);
     }
   };
 

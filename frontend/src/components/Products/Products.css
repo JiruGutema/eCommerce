@@ -10,29 +10,32 @@
   opacity: 50%;
 }
 .price {
-  color: lightcoral;
+  color: rgb(255, 226, 3);
   font-weight: bold;
   font-size: 20px;
 }
-.price:hover {
-  transform: scale(1.8);
-}
+
 .product-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 50px;
   margin: auto;
   max-width: 1200px;
+  padding-top: 50px;
   justify-content: center;
 }
 .image-container img {
-  width: 400px;
+  width: 300px;
   object-fit: cover;
   border-radius: 10px;
 }
 
+.image-container img:hover {
+  transform: scale(1.2);
+  transition: ease 1s;
+}
 .image-container {
-  width: 400px;
+  width: 300px;
   border-radius: 10px;
   margin: auto;
   background-color: dodgerblue;
@@ -40,4 +43,9 @@
 .productName {
   font-size: 20px;
   color: dod;
+}
+.imagediv {
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: white;
 }

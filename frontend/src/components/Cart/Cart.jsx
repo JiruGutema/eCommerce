@@ -14,7 +14,10 @@ function Cart({
     <>
       <div className="cart-section">
         <h1>Cart</h1>
-        <Link to="/"> Continue Shopping</Link>
+        <Link to="/" className="continueShopping">
+          {" "}
+          Continue Shopping
+        </Link>
         <div className="row">
           <CartItems
             cart={cart}

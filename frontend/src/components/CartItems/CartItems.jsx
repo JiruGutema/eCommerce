@@ -1,14 +1,31 @@
+import React from "react";
 import "./CartItems.css";
+import { Link } from "react-router-dom";
+import CartPricing from "../CartPricing/CartPricing";
 
-const CartItems = ({ cart, removeFromCart, handleQuantityChange }) => {
+const CartItems = ({
+  cart = [],
+  removeFromCart,
+  handleQuantityChange,
+  calculateTotalPrice,
+}) => {
   const handleChange = (e, item) => {
     handleQuantityChange(item._id, parseInt(e.target.value));
   };
+
   return (
     <>
       <div className="cart-item">
         {cart.length === 0 ? (
-          <h2>Your Cart is Empty</h2>
+          <div className="empty-cart">
+            <h1>😥</h1>
+            <h2>Your Cart is Empty</h2>
+            <p>Looks like you haven't added anything to your cart yet.</p>
+            <Link to="/" className="">
+              {" "}
+              Continue Shopping
+            </Link>
+          </div>
         ) : (
           cart.map((item, index) => (
             <div className="product-in-cart" key={index}>
@@ -43,7 +60,7 @@ const CartItems = ({ cart, removeFromCart, handleQuantityChange }) => {
                   </select>
                 </div>
                 <button
-                  className="removeFrom"
+                  className="removeFromCartbtn"
                   onClick={() => removeFromCart(item._id)}
                 >
                   X

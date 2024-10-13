@@ -10,7 +10,11 @@ function Products({ products, addToCart }) {
           {products.map((product) => (
             <div key={product._id} className="product">
               <div className="image-container">
-                <img src={product.imageUrl} alt={product.alt} />
+                <div className="imagediv">
+                  {" "}
+                  <img src={product.imageUrl} alt={product.alt} />
+                </div>
+
                 <h3 className="productName">{product.name}</h3>
                 <p>{product.description}</p>
                 <p className="price">{product.price.toFixed(2)} Birr</p>

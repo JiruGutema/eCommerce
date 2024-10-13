@@ -1,0 +1,13 @@
+.pricing-container > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricing-container {
+  background-color: gray;
+  width: 200px;
+  padding: 20px 40px;
+  border-radius: 10px;
+  color: black;
+  margin: auto;
+}
