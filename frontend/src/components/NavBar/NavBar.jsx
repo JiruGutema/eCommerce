@@ -1,7 +1,7 @@
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 
-function NavBar({ cartItems }) {
+function NavBar(cartItems) {
   return (
     <>
       <header className="ulContainer">

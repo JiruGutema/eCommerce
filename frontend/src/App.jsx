@@ -9,10 +9,15 @@ import Alert from "./components/Alert/Alert";
 
 function App() {
   const products = useProducts();
-  console.log(products);
+
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
+    try {
+      return savedCart ? JSON.parse(savedCart) : [];
+    } catch (e) {
+      console.error("Error parsing cart from localStorage", e);
+      return [];
+    }
   });
 
   useEffect(() => {
@@ -42,6 +47,25 @@ function App() {
     }
   };
 
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+  };
+
+  const calculateTotalPrice = () => {
+    return cart.reduce(
+      (total, item) => total + (item.price || 0) * (item.qty || 1),
+      0
+    );
+  };
+
+  const handleQuantityChange = (productId, newQuantity) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item._id === productId ? { ...item, qty: newQuantity } : item
+      )
+    );
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -52,7 +76,17 @@ function App() {
             path="/"
             element={<Home products={products} addToCart={addToCart} />}
           />
-          <Route path="/Cart" element={<Cart />} />
+          <Route
+            path="/Cart"
+            element={
+              <Cart
+                cart={cart}
+                removeFromCart={removeFromCart}
+                calculateTotalPrice={calculateTotalPrice}
+                handleQuantityChange={handleQuantityChange}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

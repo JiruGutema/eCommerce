@@ -1,19 +1,29 @@
 import "./Cart.css";
+import CartItems from "../CartItems/CartItems";
+import { Link } from "react-router-dom";
+import CartPricing from "../CartPricing/CartPricing";
+import Home from "../Home/Home";
 
-function Cart() {
+function Cart({
+  cart,
+  removeFromCart,
+  handleQuantityChange,
+  calculateTotalPrice,
+}) {
   return (
     <>
-      <div
-        style={{
-          color: "white",
-          width: "30%",
-          height: "15vh",
-          textAlign: "center",
-          background: "gray",
-          padding: "10px",
-        }}
-      >
-        This Cart
+      <div className="cart-section">
+        <h1>Cart</h1>
+        <Link to="/"> Continue Shopping</Link>
+        <div className="row">
+          <CartItems
+            cart={cart}
+            calculateTotalPrice={calculateTotalPrice}
+            removeFromCart={removeFromCart}
+            handleQuantityChange={handleQuantityChange}
+          />
+          <CartPricing calculateTotalPrice={calculateTotalPrice} />
+        </div>
       </div>
     </>
   );
