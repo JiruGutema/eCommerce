@@ -7,7 +7,7 @@ const CartPricing = ({ calculateTotalPrice }) => {
 
   return (
     <>
-      <div className="pricing-container">
+      <div className="pricing-container" id="pricing-container">
         <h3>Order Summery</h3>
         <div className="subtotal">
           <h3>Subtotal</h3>

@@ -13,6 +13,9 @@ function NavBar(cartItems) {
             <h3>Classic Ethiopian Clothes</h3>
           </li>
           <li>
+            <Link to="/Login">Login</Link>
+          </li>
+          <li>
             <Link to="/Cart">
               {cartItems.length > 0 && (
                 <p className="count-items">{cartItems.length}</p>

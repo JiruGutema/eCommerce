@@ -2,12 +2,33 @@
   display: flex;
   justify-content: space-between;
 }
-
+.pricing-container h3 {
+  font-size: 20px;
+}
 .pricing-container {
-  background-color: gray;
-  width: 200px;
-  padding: 20px 40px;
-  border-radius: 10px;
-  color: black;
-  margin: auto;
+  max-width: 300px;
+  height: 300px;
+  background-color: #daa520;
+  font-size: 20px;
+}
+.pricing-container * {
+  margin: 5px;
+}
+.pricing-container > h3 {
+  color: greenyellow;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.check-out {
+  background-color: green;
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 5px 20px;
+}
+@media (max-width: 768px) {
+  .pricing-container {
+    height: 100px;
+    padding: 10px;
+  }
 }

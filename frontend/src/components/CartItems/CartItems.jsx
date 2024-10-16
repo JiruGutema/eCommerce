@@ -17,6 +17,7 @@ const CartItems = ({
     <>
       <div className="cart-item">
         {cart.length === 0 ? (
+          // document.getElementById("pricing-container").style.display = "none";
           <div className="empty-cart">
             <h1>😥</h1>
             <h2>Your Cart is Empty</h2>
@@ -30,7 +31,11 @@ const CartItems = ({
           cart.map((item, index) => (
             <div className="product-in-cart" key={index}>
               <div className="product-in-cart-left">
-                <img src={item.imageUrl} alt={item.alt} />
+                <img
+                  src={item.imageUrl}
+                  alt={item.alt}
+                  className="image-in-Product"
+                />
                 <div className="product-info">
                   <p>Item: {item.name} </p>
                   <p>sku: {item.sku}</p>

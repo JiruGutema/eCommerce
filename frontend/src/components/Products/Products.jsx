@@ -12,12 +12,17 @@ function Products({ products, addToCart }) {
               <div className="image-container">
                 <div className="imagediv">
                   {" "}
-                  <img src={product.imageUrl} alt={product.alt} />
+                  <img
+                    src={product.imageUrl}
+                    alt={product.alt || "Product Image"}
+                  />
                 </div>
 
                 <h3 className="productName">{product.name}</h3>
                 <p>{product.description}</p>
-                <p className="price">{product.price.toFixed(2)} Birr</p>
+                <p className="price">
+                  {product.price ? product.price.toFixed(2) : "N/A"} Birr
+                </p>
                 <button
                   className="add-to-cart"
                   onClick={() => addToCart(product)}

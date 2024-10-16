@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import useProducts from "./hooks/useProducts";
 import { useEffect, useState } from "react";
 import Alert from "./components/Alert/Alert";
+import LoginForm from "./components/LoginSignUp/LoginForm";
 
 function App() {
   const products = useProducts();
@@ -89,6 +90,7 @@ function App() {
               />
             }
           />
+          <Route path="Login" element={<LoginForm />} />
         </Routes>
       </BrowserRouter>
     </>
