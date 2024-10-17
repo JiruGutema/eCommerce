@@ -17,11 +17,9 @@ const CartItems = ({
     <>
       <div className="cart-item">
         {cart.length === 0 ? (
-          // document.getElementById("pricing-container").style.display = "none";
           <div className="empty-cart">
-            <h1>😥</h1>
             <h2>Your Cart is Empty</h2>
-            <p>Looks like you haven't added anything to your cart yet.</p>
+
             <Link to="/" className="">
               {" "}
               Continue Shopping

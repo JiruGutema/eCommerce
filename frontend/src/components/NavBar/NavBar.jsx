@@ -7,7 +7,7 @@ function NavBar(cartItems) {
       <header className="ulContainer">
         <nav>
           <li>
-            <Link to="/Home">
+            <Link to="/">
               <i className="fa-solid fa-house"></i>{" "}
             </Link>
             <h3>Classic Ethiopian Clothes</h3>

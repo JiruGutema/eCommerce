@@ -35,7 +35,6 @@
   opacity: 50%;
 }
 .product-in-cart-left {
-  display: flex;
   overflow: hidden;
 }
 .product-in-cart-right {
@@ -64,7 +63,7 @@
 }
 
 .cart-item {
-  width: 100%;
+  width: 50%;
   margin: auto;
   max-width: 800px;
   display: flex;
@@ -76,20 +75,6 @@
   margin-top: 50px;
   overflow: auto;
   margin: 0;
-}
-
-.empty-cart {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 250px;
-  text-align: center;
-  background-color: rgb(228, 24, 10);
-  border-radius: 20px;
-  box-shadow: 0 0 15px gray;
-  margin-top: 30px;
-  color: white;
 }
 
 .empty-cart h2 {

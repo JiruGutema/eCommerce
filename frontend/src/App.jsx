@@ -31,16 +31,18 @@ function App() {
 
     if (cart.some((cartItem) => cartItem._id === product._id)) {
       messageContainer.textContent = "Product is already added to the cart";
-      alertContainer.style.color = "white";
+      messageContainer.style.backgroundColor = "none";
+      alertContainer.style.color = "red";
+      alertContainer.style.backgroundColor = "none";
       alertContainer.style.display = "block";
-      alertContainer.style.backgroundColor = "red";
+
       setTimeout(() => {
         alertContainer.style.display = "none";
       }, 3000);
     } else {
       messageContainer.textContent = "Item added to the cart";
-      alertContainer.style.backgroundColor = "green";
-      alertContainer.style.color = "white";
+
+      alertContainer.style.color = "green";
       alertContainer.style.display = "block";
       setTimeout(() => {
         alertContainer.style.display = "none";

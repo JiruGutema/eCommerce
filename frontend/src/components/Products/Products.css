@@ -3,8 +3,9 @@
   color: white;
   padding: 10px 20px;
   margin-bottom: 20px;
-  background-color: black;
+  background-color: lightseagreen;
   border: none;
+  width: 60%;
 }
 .add-to-cart:active {
   opacity: 50%;
@@ -20,12 +21,12 @@
   flex-wrap: wrap;
   gap: 50px;
   margin: auto;
-  max-width: 1200px;
+  max-width: 1400px;
   padding-top: 50px;
   justify-content: center;
 }
 .image-container img {
-  width: 300px;
+  height: 300px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -35,10 +36,11 @@
   transition: ease 1s;
 }
 .image-container {
-  width: 300px;
+  width: 400px;
+  height: 550px;
   border-radius: 10px;
   margin: auto;
-  background-color: dodgerblue;
+  background-color: white;
 }
 .productName {
   font-size: 20px;
