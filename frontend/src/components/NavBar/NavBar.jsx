@@ -10,7 +10,7 @@ function NavBar(cartItems) {
             <Link to="/">
               <i className="fa-solid fa-house"></i>{" "}
             </Link>
-            <h3>Classic Ethiopian Clothes</h3>
+            <h3>Ethio-Shopping</h3>
           </li>
           <li>
             <Link to="/Login">Login</Link>

@@ -8,22 +8,39 @@ import { useEffect, useState } from "react";
 import Alert from "./components/Alert/Alert";
 import LoginForm from "./components/LoginSignUp/LoginForm";
 
+// Create a simple 404 component
+const NotFound = () => {
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>404 - Page Not Found</h2>
+      <p>The page you are looking for does not exist.</p>
+    </div>
+  );
+};
+
 function App() {
   const products = useProducts();
-
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
-    try {
-      return savedCart ? JSON.parse(savedCart) : [];
-    } catch (e) {
-      console.error("Error parsing cart from localStorage", e);
-      return [];
-    }
+    return savedCart ? JSON.parse(savedCart) : [];
   });
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem("isAuthenticated", "true"); // Persist authentication
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setCart([]);
+    localStorage.removeItem("cart");
+    localStorage.removeItem("isAuthenticated"); // Clear authentication
+  };
 
   const addToCart = (product) => {
     const alertContainer = document.getElementById("alertMessage");
@@ -31,9 +48,7 @@ function App() {
 
     if (cart.some((cartItem) => cartItem._id === product._id)) {
       messageContainer.textContent = "Product is already added to the cart";
-      messageContainer.style.backgroundColor = "none";
       alertContainer.style.color = "red";
-      alertContainer.style.backgroundColor = "none";
       alertContainer.style.display = "block";
 
       setTimeout(() => {
@@ -72,30 +87,39 @@ function App() {
   };
 
   return (
-    <>
-      <BrowserRouter>
-        <NavBar cartItems={cart} />
-        <Alert />
-        <Routes>
-          <Route
-            path="/"
-            element={<Home products={products} addToCart={addToCart} />}
-          />
-          <Route
-            path="/Cart"
-            element={
-              <Cart
-                cart={cart}
-                removeFromCart={removeFromCart}
-                calculateTotalPrice={calculateTotalPrice}
-                handleQuantityChange={handleQuantityChange}
-              />
-            }
-          />
-          <Route path="Login" element={<LoginForm />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <NavBar cartItems={cart} onLogout={handleLogout} />
+      <Alert />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              products={products}
+              addToCart={addToCart}
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        />
+        <Route
+          path="/Cart"
+          element={
+            <Cart
+              cart={cart}
+              removeFromCart={removeFromCart}
+              calculateTotalPrice={calculateTotalPrice}
+              handleQuantityChange={handleQuantityChange}
+            />
+          }
+        />
+        <Route
+          path="/Login"
+          element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
+        />
+        {/* Catch-all route for 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

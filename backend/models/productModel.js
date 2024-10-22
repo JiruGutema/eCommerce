@@ -29,4 +29,26 @@ const productSchema = new Schema({
     required: "alt is required",
   },
 });
-export default mongoose.model("Product", productSchema);
+
+const userSchema = new Schema({
+  username: {
+    type: String,
+    required: "username is required",
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: "password is required",
+  },
+});
+
+// Simple password verification method (placeholder)
+userSchema.methods.verifyPassword = function (password) {
+  // Implement your password verification logic here
+  return this.password === password; // Placeholder for direct comparison
+};
+
+const Product = mongoose.model("Product", productSchema);
+const User = mongoose.model("User", userSchema);
+
+export { Product, User };
