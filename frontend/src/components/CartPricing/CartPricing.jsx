@@ -1,10 +1,13 @@
 import "./CartPricing.css";
+import { Navigate } from "react-router-dom";
 
 const CartPricing = ({ calculateTotalPrice }) => {
   const subTotal = calculateTotalPrice();
   const tax = subTotal * 0.009;
   const total = subTotal + tax;
 
+  function paymentRouter() {}
+  navigation.navigate("/payment");
   return (
     <>
       <div className="pricing-container" id="pricing-container">

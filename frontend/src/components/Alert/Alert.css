@@ -1,7 +1,7 @@
 #alertMessage {
   position: fixed;
   width: 400px;
-  height: 100px;
+  height: 150px;
   z-index: 10;
   top: 20%;
   left: 50%;
@@ -11,6 +11,7 @@
   border-radius: 10px;
   padding-bottom: 20px;
   display: none;
+  background-color: aqua;
 }
 #message {
   font-weight: bold;

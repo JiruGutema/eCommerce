@@ -5,7 +5,7 @@
 .product-in-cart {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 500px;
   height: 130px;
   margin: auto;
   background-color: lightskyblue;
@@ -16,6 +16,9 @@
 .product-info p {
   margin: 0;
   padding: 0;
+}
+.price {
+  color: green;
 }
 .product-info {
   margin: 50px 5px;

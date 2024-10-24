@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+
 import "./LoginForm.css";
 
 function LoginForm({ onLoginSuccess }) {
@@ -67,21 +68,34 @@ function LoginForm({ onLoginSuccess }) {
     <div className="form-container" id="formContainer">
       <h2 id="formTitle">{isLogin ? "Login" : "Sign Up"}</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type={isLogin ? "text" : "email"}
-          name="username"
-          placeholder={isLogin ? "Username" : "Email"}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
+        <div className="email">
+          {" "}
+          <label htmlFor="email">Email</label>
+          <input
+            type={isLogin ? "text" : "email"}
+            name="username"
+            placeholder={isLogin ? "Username" : "Email"}
+            required
+          />
+        </div>
+        <div className="password">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+        </div>
+
         {error && (
-          <p className="error" aria-live="assertive">
-            {error}
+          <p className="error" style={{ color: "red" }} aria-live="assertive">
+            {JSON.parse(error).message}
+          </p>
+        )}
+        {successMessage && (
+          <p className="error" style={{ color: "green" }} aria-live="assertive">
+            Registeration Success
           </p>
         )}
         <div className="toggle">
@@ -89,10 +103,14 @@ function LoginForm({ onLoginSuccess }) {
             {loading ? "Loading..." : isLogin ? "Login" : "Sign Up"}
           </button>
           <p>
-            Don't have an account?{" "}
-            <button type="button" onClick={toggleForm}>
+            {isLogin ? "Don't have " : "Have"} an account?{" "}
+            <a
+              className={isLogin ? "SignUP" : "Login"}
+              type="button"
+              onClick={toggleForm}
+            >
               {isLogin ? "Sign Up" : "Login"}
-            </button>
+            </a>
           </p>
         </div>
       </form>

@@ -28,6 +28,7 @@ export const checkUser = async (req, res) => {
 
 export const registerUser = async (req, res) => {
   const newUser = new User(req.body);
+  console.log(req.body.password);
   try {
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);

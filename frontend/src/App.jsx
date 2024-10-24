@@ -7,6 +7,7 @@ import useProducts from "./hooks/useProducts";
 import { useEffect, useState } from "react";
 import Alert from "./components/Alert/Alert";
 import LoginForm from "./components/LoginSignUp/LoginForm";
+import Payment from "./components/Payment/Payment";
 
 // Create a simple 404 component
 const NotFound = () => {
@@ -32,7 +33,8 @@ function App() {
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
-    localStorage.setItem("isAuthenticated", "true"); // Persist authentication
+    localStorage.setItem("isAuthenticated", "true");
+    // Persist authentication
   };
 
   const handleLogout = () => {
@@ -88,7 +90,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar cartItems={cart} onLogout={handleLogout} />
+      <NavBar
+        cartItems={cart}
+        onClick={handleLogout}
+        isAuthenticated={localStorage.getItem("isAuthenticated")}
+      />
       <Alert />
       <Routes>
         <Route
@@ -97,7 +103,7 @@ function App() {
             <Home
               products={products}
               addToCart={addToCart}
-              isAuthenticated={isAuthenticated}
+              isAuthenticated={localStorage.getItem("isAuthenticated")}
             />
           }
         />

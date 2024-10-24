@@ -2,6 +2,9 @@ nav {
   max-width: 1200px;
   margin: 0 auto;
 }
+form {
+  width: 80%;
+}
 
 nav ul {
   list-style-type: none;
@@ -23,7 +26,20 @@ nav ul li a {
 nav ul li a:hover {
   color: #e8491d; /* Accent color for hover effect */
 }
+.SignUP {
+  background-color: none;
+}
+.password,
+.email {
+  display: flex;
+  align-items: center;
 
+  gap: 5px;
+  justify-content: space-between;
+}
+form > div > input {
+  max-width: 220px;
+}
 /* Responsive Styles */
 @media (max-width: 768px) {
   nav ul {
@@ -46,7 +62,7 @@ nav ul li a:hover {
   border-radius: 8px;
   padding: 30px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  width: 320px;
+  width: 400px;
   transition: transform 0.3s;
   top: 50%;
   left: 50%;
