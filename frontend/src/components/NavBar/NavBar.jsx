@@ -12,22 +12,29 @@ function NavBar(cartItems, isAuthenticated, onClick) {
             </Link>
             <h3>Ethio-Shopping</h3>
           </li>
-          {/* <li>
-            <Link to="/Login">Login</Link>
-          </li> */}
-          <li style={{ display: "flex", flexDirection: "row" }}>
-            <Link to="/Cart">
-              {cartItems.length > 0 && (
-                <p className="count-items">{cartItems.length}</p>
-              )}
-              <i className="fa-solid fa-cart-shopping"></i>
-            </Link>
+          <div className="left">
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/about">Contact</Link>
+            </li>
+
             <li>
               <Link to="/Login" onClick={onClick}>
-                {isAuthenticated ? "Logout" : "Login"}{" "}
+                {isAuthenticated ? "User" : "User"}{" "}
               </Link>
             </li>
-          </li>
+
+            <li style={{ display: "flex", flexDirection: "row" }}>
+              <Link to="/Cart">
+                {cartItems.length > 0 && (
+                  <p className="count-items">{cartItems.length}</p>
+                )}
+                <i className="fa-solid fa-cart-shopping"></i>
+              </Link>
+            </li>
+          </div>
         </nav>
       </header>
     </>

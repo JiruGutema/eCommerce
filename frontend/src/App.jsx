@@ -107,6 +107,7 @@ function App() {
             />
           }
         />
+        <Route path="/payment" element={<Payment />} />
         <Route
           path="/Cart"
           element={
@@ -123,6 +124,8 @@ function App() {
           element={<LoginForm onLoginSuccess={handleLoginSuccess} />}
         />
         {/* Catch-all route for 404 */}
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

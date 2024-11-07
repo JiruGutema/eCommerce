@@ -48,3 +48,8 @@ h3 {
   background-color: red;
   border-radius: 200px 200px;
 }
+.left {
+  display: flex;
+  gap: 10px;
+  font-weight: lighter;
+}
