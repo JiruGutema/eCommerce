@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Alert from "./components/Alert/Alert";
 import LoginForm from "./components/LoginSignUp/LoginForm";
 import Payment from "./components/Payment/Payment";
+import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 
 // Create a simple 404 component
 const NotFound = () => {
@@ -125,7 +127,7 @@ function App() {
         />
         {/* Catch-all route for 404 */}
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
